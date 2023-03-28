@@ -7,11 +7,17 @@
     <VerticalStackLayout>
         <Button
                         BackgroundColor="Transparent"
-                        Command="{Binding AuthenticateTapCommand}"
+                        Command="{Binding RecommendedTapCommand}"
                         FontSize="16"
                         HorizontalOptions="Center"
                         Text="Sign in"
                         TextColor="Black"
                         VerticalOptions="Center" />
+        <Label FontAttributes="Bold"
+                       FontSize="26"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="{Binding IdToken}"
+                       TextColor="Black"
+                       VerticalTextAlignment="Center" />
     </VerticalStackLayout>
 </ContentPage>
