@@ -7,7 +7,7 @@
     <VerticalStackLayout>
         <Button
                         BackgroundColor="Transparent"
-                        Command="{Binding RecommendedTapCommand}"
+                        Command="{Binding AuthenticateTapCommand}"
                         FontSize="16"
                         HorizontalOptions="Center"
                         Text="Sign in"

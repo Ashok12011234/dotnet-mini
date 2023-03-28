@@ -53,6 +53,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="Asgardeo.OIDC.SDK" Version="0.1.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Asgardeo.OIDC.SDK">
+	    <HintPath>..\..\Downloads\Asgardeo.OIDC.SDK.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Views\Signin.xaml.cs">
 	    <DependentUpon>Signin.xaml</DependentUpon>
 	  </Compile>
