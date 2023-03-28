@@ -30,13 +30,9 @@ namespace EcommerceMAUI.ViewModel
         void PopulateData()
         {
             MenuItems.Clear();
-            MenuItems.Add(new Model.MenuItems() { Title = "Edit Profile", Body = "\uf3eb", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Shipping Address", Body = "\uf34e", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Wishlist", Body = "\uf2d5", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Order History", Body = "\uf150", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Track Order", Body = "\uf787", TargetType = typeof(OrderDetails) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Cards", Body = "\uf19b", TargetType = typeof(HomePage) });
-            MenuItems.Add(new Model.MenuItems() { Title = "Notifications", Body = "\uf09c", TargetType = typeof(HomePage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Wishlist", Body = "\uf2d5", TargetType = typeof(CartPage) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Order History", Body = "\uf150", TargetType = typeof(OrderDetails) });
+            MenuItems.Add(new Model.MenuItems() { Title = "Notifications", Body = "\uf09c", TargetType = typeof(CartPage) });
         }
 
         private void CommandInit()

@@ -31,8 +31,22 @@
                        Text="iamdavid@gmail.com"
                        TextColor="Black"
                        VerticalTextAlignment="Center" />
+                
             </StackLayout>
+            <StackLayout Margin="20"
+                         VerticalOptions="CenterAndExpand">
+
+                <Label FontSize="36"
+                       HorizontalOptions="CenterAndExpand"
+                       Text="Platinum"
+                       TextColor="Gold"
+                       VerticalTextAlignment="Center"
+                       BackgroundColor="Green"
+                       />
+            </StackLayout>
+
         </StackLayout>
+       
         <CollectionView ItemsSource="{Binding MenuItems}"
                         Margin="12">
 

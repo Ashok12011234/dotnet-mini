@@ -17,12 +17,8 @@ namespace EcommerceMAUI.ViewModel
         {
             PopulateData();
             TapBackCommand = new Command<object>(GoBack);
-            TapCommand = new Command<object>(TrackCommand);
         }
-        private async void TrackCommand(object obj)
-        {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new TrackOrder((Track)obj));
-        }
+        
         private async void GoBack(object obj)
         {
             await Application.Current.MainPage.Navigation.PopModalAsync();

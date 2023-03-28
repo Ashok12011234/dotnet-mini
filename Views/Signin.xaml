@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="EcommerceMAUI.Views.Signin"
+             Shell.NavBarIsVisible="False"
+             Title="Signin">
+    <VerticalStackLayout>
+        <Button
+                        BackgroundColor="Transparent"
+                        Command="{Binding RecommendedTapCommand}"
+                        FontSize="16"
+                        HorizontalOptions="Center"
+                        Text="Sign in"
+                        TextColor="Black"
+                        VerticalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

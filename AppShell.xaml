@@ -30,6 +30,23 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
         </Tab>
+
+        <Tab Title="Sign in">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icon"
+                                 Glyph="&#xf004;"></FontImageSource>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:Signin}" />
+        </Tab>
+
+        <Tab Title="Sign up">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icon"
+                                 Glyph="&#xf004;"></FontImageSource>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:Signup}" />
+        </Tab>
+
     </TabBar>
 
 </Shell>
