@@ -38,7 +38,7 @@
 
                 <Label FontSize="36"
                        HorizontalOptions="CenterAndExpand"
-                       Text="Platinum"
+                       Text="{Binding Membership}"
                        TextColor="Gold"
                        VerticalTextAlignment="Center"
                        BackgroundColor="Green"
