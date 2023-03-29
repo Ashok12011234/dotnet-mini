@@ -59,5 +59,15 @@ public partial class AuthenticationService
         return jsonToken;
     }
 
-
+    public static bool checkLogin()
+    {
+        var accessToken = _currentAccessToken;
+        if (_currentAccessToken == null) 
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
+    }
 }
