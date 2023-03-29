@@ -6,7 +6,7 @@
              Title="Signin">
     <VerticalStackLayout>
         <Button
-                        BackgroundColor="Transparent"
+                        BackgroundColor="Green"
                         Command="{Binding RecommendedTapCommand}"
                         FontSize="16"
                         HorizontalOptions="Center"
@@ -17,7 +17,7 @@
                        FontSize="26"
                        HorizontalOptions="CenterAndExpand"
                        Text="{Binding IdToken}"
-                       TextColor="Black"
+                       TextColor="white"
                        VerticalTextAlignment="Center" />
     </VerticalStackLayout>
 </ContentPage>
