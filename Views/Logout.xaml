@@ -10,6 +10,7 @@
                         Command="{Binding RecommendedTapCommand}"
                         FontSize="16"
                         HorizontalOptions="Center"
+                        Clicked="OnLogoutClicked"
                         Text="Log out"
                         TextColor="Black"
                         VerticalOptions="Center" />

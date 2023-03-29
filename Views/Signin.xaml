@@ -10,6 +10,7 @@
                         Command="{Binding RecommendedTapCommand}"
                         FontSize="16"
                         HorizontalOptions="Center"
+                        Clicked="OnLoginClicked"
                         Text="Sign in"
                         TextColor="Black"
                         VerticalOptions="Center" />

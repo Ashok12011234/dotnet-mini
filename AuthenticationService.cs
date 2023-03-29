@@ -1,12 +1,7 @@
 ﻿//using CoreMidi;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IdentityModel.Tokens.Jwt;
 using EcommerceMAUI.Model.SDK;
 using Newtonsoft.Json;
-
 namespace EcommerceMAUI;
 
 public partial class AuthenticationService
@@ -32,23 +27,38 @@ public partial class AuthenticationService
     public static async Task logout()
     {
         await authenticationHelper.Logout(_currentAccessToken);
-        var request = authenticationHelper.Request;
+        //var request = authenticationHelper.Request;
     }
 
     public static string getAccessToken()
 
     {
-        _currentAccessToken = authenticationHelper.AccessToken;
+       // _currentAccessToken = authenticationHelper.AccessToken;
         return _currentAccessToken;
 
     }
 
-    public static string getUserInfo()
+    public static string getUser()
     {
         var userInfo = authenticationHelper.UserInfo;
         dynamic json = JsonConvert.DeserializeObject(userInfo);
         var subject = json.sub;
         return subject;
+    }
+
+    public static string getUserInfo()
+    {
+        var accessToken = _currentAccessToken;
+        dynamic accessJson = JsonConvert.DeserializeObject(accessToken);
+        var userInfo = authenticationHelper.UserInfo;
+        dynamic userJson = JsonConvert.DeserializeObject(userInfo);
+        var idToken = accessJson.id_token;
+
+        string stream = idToken;
+        var handler = new JwtSecurityTokenHandler();
+        var jsonToken = handler.ReadJwtToken(stream);
+
+        return jsonToken.ToString();
     }
 
 

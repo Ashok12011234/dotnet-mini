@@ -38,10 +38,11 @@ namespace EcommerceMAUI.ViewModel
 
         private async void Authenticate(object obj)
         {
-           
+
             await AuthenticationService.login();
-           
-            IdToken =AuthenticationService.getAccessToken();
+
+            //IdToken =AuthenticationService.getAccessToken();
+            IdToken = AuthenticationService.getUserInfo();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
