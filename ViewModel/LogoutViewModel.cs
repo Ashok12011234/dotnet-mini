@@ -1,9 +1,10 @@
-﻿using System;
+﻿using EcommerceMAUI.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EcommerceMAUI.Model.SDK;
+
 
 namespace EcommerceMAUI.ViewModel
 {
@@ -16,14 +17,10 @@ namespace EcommerceMAUI.ViewModel
         }
         private async void SelectRecommend(object obj)
         {
-            // Authenticate the user
-            //AuthenticationHelper authenticationHelper = new AuthenticationHelper();
-            //await authenticationHelper.Login();
-            //var accessToken = authenticationHelper.AccessToken;
-            await AuthenticationService.logout();
-            //IdToken = authenticationHelper.AccessToken;
-            //Console.WriteLine(accessToken);
-            //IdToken = authenticationHelper.UserInfo;
+           
+            //await AuthenticationService.logout();
+            await Application.Current.MainPage.Navigation.PushModalAsync(new Signin());
+
         }
     }
 }

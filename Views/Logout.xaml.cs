@@ -6,4 +6,14 @@ public partial class Logout : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void OnLogoutClicked(object sender, EventArgs e)
+
+    {
+
+        await AuthenticationService.logout();
+
+
+
+    }
 }
