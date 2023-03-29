@@ -28,9 +28,10 @@
                 <FontImageSource FontFamily="icon"
                                  Glyph="&#xf004;"></FontImageSource>
             </Tab.Icon>
+           
             <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
         </Tab>
-
+        
         <Tab Title="Sign in">
             <Tab.Icon>
                 <FontImageSource FontFamily="icon"
@@ -46,6 +47,16 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:Signup}" />
         </Tab>
+
+        <Tab Title="Log out">
+            <Tab.Icon>
+                <FontImageSource FontFamily="icon"
+                                 Glyph="&#xf004;"></FontImageSource>
+            </Tab.Icon>
+            <ShellContent ContentTemplate="{DataTemplate local:Logout}" />
+        </Tab>
+        
+
 
     </TabBar>
 
