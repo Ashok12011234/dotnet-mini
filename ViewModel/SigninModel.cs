@@ -42,7 +42,7 @@ namespace EcommerceMAUI.ViewModel
             await AuthenticationService.login();
 
             //IdToken =AuthenticationService.getAccessToken();
-            IdToken = AuthenticationService.getUserInfo();
+            IdToken = AuthenticationService.getUserInfo().ToString();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
