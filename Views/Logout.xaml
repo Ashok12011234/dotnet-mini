@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EcommerceMAUI.Views.Signin"
-             Shell.NavBarIsVisible="False"
-             Title="Signin">
+             x:Class="EcommerceMAUI.Views.Logout"
+              Shell.NavBarIsVisible="False"
+             Title="Logout">
     <VerticalStackLayout>
         <Button
-                        BackgroundColor="Green"
+                        BackgroundColor="Transparent"
                         Command="{Binding RecommendedTapCommand}"
                         FontSize="16"
                         HorizontalOptions="Center"
-                        Clicked="OnLoginClicked"
-                        Text="Sign in"
+                        Clicked="OnLogoutClicked"
+                        Text="Log out"
                         TextColor="Black"
                         VerticalOptions="Center" />
         <Label FontAttributes="Bold"
                        FontSize="12"
                        HorizontalOptions="CenterAndExpand"
-                       Text="{Binding IdToken}"
-                       TextColor="white"
+                       Text="logout"
+                       TextColor="Black"
                        VerticalTextAlignment="Center" />
     </VerticalStackLayout>
 </ContentPage>

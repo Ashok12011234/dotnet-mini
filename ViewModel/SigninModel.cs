@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+//using CoreData;
 using EcommerceMAUI.Model.SDK;
 using EcommerceMAUI.Views;
 
@@ -37,13 +38,11 @@ namespace EcommerceMAUI.ViewModel
 
         private async void Authenticate(object obj)
         {
-            // Authenticate the user
-            AuthenticationHelper authenticationHelper = new AuthenticationHelper();
-            await authenticationHelper.Login();
-            var accessToken = authenticationHelper.AccessToken;
-            IdToken = authenticationHelper.AccessToken;
-            //Console.WriteLine(accessToken);
 
+            await AuthenticationService.login();
+
+            //IdToken =AuthenticationService.getAccessToken();
+            IdToken = AuthenticationService.getUserInfo().ToString();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
