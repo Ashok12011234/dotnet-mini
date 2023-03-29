@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 using System.Text.Json.Nodes;
 using System.IdentityModel.Tokens.Jwt;
-
+using System.Runtime.CompilerServices;
 
 namespace EcommerceMAUI.ViewModel
 {

@@ -8,6 +8,7 @@ using System.IO;
 using System.Security.Cryptography;
 using log4net;
 using System.Diagnostics;
+//using AuthenticationServices;
 
 namespace EcommerceMAUI.Model.SDK
 {
@@ -246,7 +247,21 @@ namespace EcommerceMAUI.Model.SDK
                 config.PostLogoutRedirectUri);
 
             // Opens request in the browser.    
-            System.Diagnostics.Process.Start(postRedirectURI);
+            //System.Diagnostics.Process.Start(postRedirectURI);
+            Process myProcess = new Process();
+
+            try
+            {
+                // true is the default, but it is important not to set it to false
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = postRedirectURI;
+                myProcess.Start();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(postRedirectURI);
+            }
 
             // Waits for the OAuth authorization response.
             var context = await http.GetContextAsync();
