@@ -3,15 +3,19 @@
 using EcommerceMAUI.Model;
 using EcommerceMAUI.Views;
 using System.Windows.Input;
+using System.Text.Json.Nodes;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace EcommerceMAUI.ViewModel
 {
     public class ProfileViewModel : BaseViewModel
     {
+        //JwtSecurityToken IdToken = AuthenticationService.getUserInfo();
         public ICommand TapCommand { get; private set; }
 
-        public string Name { get; set; } = "David Spade";
-        public string Email { get; set; } = "iamdavid@gmail.com";
+        public string Name { get; set; } = AuthenticationService.getUserInfo().Claims.First(claim => claim.Type == "given_name").Value.ToString();
+
+        public string Email { get; set; } = AuthenticationService.getUserInfo().Claims.First(claim => claim.Type == "email").Value.ToString();
         public string ImageUrl { get; set; } = "https://raw.githubusercontent.com/exendahal/ecommerceXF/master/eCommerce/eCommerce.Android/Resources/drawable/Avatar.png";
 
         public List<MenuItems> _MenuItems = new List<MenuItems>();
