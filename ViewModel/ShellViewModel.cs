@@ -22,11 +22,15 @@ namespace EcommerceMAUI.ViewModel
 
         public bool IsAuthenticated
         {
-            get => _isAuthenticated;
+            get => SessionManager.IsAuthenticated();
             set
             {
-                _isAuthenticated = value;
-                OnPropertyChanged();
+                if (_isAuthenticated != value)
+                {
+                    _isAuthenticated = value;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(IsNotAuthenticated));
+                }
             }
         }
 

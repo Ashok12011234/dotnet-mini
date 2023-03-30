@@ -13,6 +13,10 @@ public partial class Logout : ContentPage
 
         await AuthenticationService.logout();
 
-        await Navigation.PushAsync(new Signin());
+        // Create a new instance of the AppShell
+        var newShell = new AppShell();
+
+        // Set the new Shell as the MainPage of the Application
+        Application.Current.MainPage = newShell;
     }
 }
