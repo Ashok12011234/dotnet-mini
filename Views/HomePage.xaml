@@ -7,9 +7,12 @@
     Title="HomePage"
     BackgroundColor="White"
     Shell.NavBarIsVisible="False">
+    
+    
     <StackLayout Margin="8,12" Spacing="0">
         
-
+        
+        
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout Spacing="0">
                 <Label
@@ -21,6 +24,7 @@
                     Text="Categories"
                     TextColor="Black"
                     VerticalOptions="EndAndExpand" />
+
 
                 <CollectionView
                     Margin="0,6"
@@ -122,9 +126,17 @@
                                         TextColor="#00C569"
                                         VerticalOptions="Start" />
                                 </StackLayout>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={x:Reference homePage}, Path=BindingContext.TapCommand}" CommandParameter="{Binding .}" />
-                                </StackLayout.GestureRecognizers>
+
+                                <Button Text="ADD TO CART"                       
+                        Padding="54,12"
+                        BackgroundColor="#00C569"
+                        TextColor="White"
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                                </Button>
+                             
+
+                                
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
