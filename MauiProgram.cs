@@ -12,8 +12,6 @@ public static class MauiProgram
         //FileInfo fi = new FileInfo("log4net.config");
         log4net.Config.XmlConfigurator.Configure();
 
-        log.Info("Hello hasini world!");
-
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()

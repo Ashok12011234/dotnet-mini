@@ -13,7 +13,6 @@ public partial class Logout : ContentPage
 
         await AuthenticationService.logout();
 
-
-
+        await Navigation.PushAsync(new Signin());
     }
 }
