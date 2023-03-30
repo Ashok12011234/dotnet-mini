@@ -53,7 +53,7 @@ namespace EcommerceMAUI.ViewModel
         public async Task getMembership()
         {
             HttpClient HttpClient = new HttpClient();
-            HttpClient.DefaultRequestHeaders.Add("accessToken", AuthenticationService.getAccessToken());
+            HttpClient.DefaultRequestHeaders.Add("accessToken", SessionManager.GetCurrentAccessToken());
             var response = await HttpClient.GetAsync("http://localhost:8070/authorized");
             
             response.EnsureSuccessStatusCode();

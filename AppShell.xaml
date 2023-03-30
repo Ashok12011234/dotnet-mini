@@ -24,7 +24,7 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:CartPage}" />
         </Tab>
-        <Tab Title="Account">
+        <Tab Title="Account" BindingContext="{x:Static viewModel:ShellViewModel.Instance}" IsVisible="{Binding Path=IsAuthenticated}">
             <Tab.Icon>
                 <FontImageSource FontFamily="icon"
                                  Glyph="&#xf004;"></FontImageSource>

@@ -21,7 +21,7 @@ public partial class AuthenticationService
         authenticationHelper = new AuthenticationHelper();
         await authenticationHelper.Login();
         _currentAccessToken = authenticationHelper.AccessToken;
-        var currentUser = getUserInfo();
+        var currentUser = getUser();
         SessionManager.SetSession(_currentAccessToken, currentUser);
 
     }
