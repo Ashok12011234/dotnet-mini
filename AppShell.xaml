@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:EcommerceMAUI.Views"
+    xmlns:viewModel="clr-namespace:EcommerceMAUI.ViewModel"
     Shell.TabBarBackgroundColor ="White"
        Shell.TabBarTitleColor="Green"
     Shell.TabBarUnselectedColor="Black"
@@ -23,7 +24,7 @@
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:CartPage}" />
         </Tab>
-        <Tab Title="Account">
+        <Tab Title="Account" BindingContext="{x:Static viewModel:ShellViewModel.Instance}" IsVisible="{Binding Path=IsAuthenticated}">
             <Tab.Icon>
                 <FontImageSource FontFamily="icon"
                                  Glyph="&#xf004;"></FontImageSource>
@@ -31,8 +32,8 @@
            
             <ShellContent ContentTemplate="{DataTemplate local:Profile}" />
         </Tab>
-        
-        <Tab Title="Sign in">
+
+        <Tab Title="Sign in" BindingContext="{x:Static viewModel:ShellViewModel.Instance}" IsVisible="{Binding IsNotAuthenticated}">
             <Tab.Icon>
                 <FontImageSource FontFamily="icon"
                                  Glyph="&#xf004;"></FontImageSource>
@@ -40,23 +41,12 @@
             <ShellContent ContentTemplate="{DataTemplate local:Signin}" />
         </Tab>
 
-        <Tab Title="Sign up">
+        <Tab Title="Logout" BindingContext="{x:Static viewModel:ShellViewModel.Instance}" IsVisible="{Binding Path=IsAuthenticated}">
             <Tab.Icon>
-                <FontImageSource FontFamily="icon"
-                                 Glyph="&#xf004;"></FontImageSource>
-            </Tab.Icon>
-            <ShellContent ContentTemplate="{DataTemplate local:Signup}" />
-        </Tab>
-
-        <Tab Title="Log out">
-            <Tab.Icon>
-                <FontImageSource FontFamily="icon"
-                                 Glyph="&#xf004;"></FontImageSource>
+                <FontImageSource FontFamily="icon" Glyph="&#xf004;" />
             </Tab.Icon>
             <ShellContent ContentTemplate="{DataTemplate local:Logout}" />
         </Tab>
-        
-
 
     </TabBar>
 
