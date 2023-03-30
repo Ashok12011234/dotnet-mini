@@ -40,9 +40,13 @@ namespace EcommerceMAUI.ViewModel
         {
 
             await AuthenticationService.login();
-
-            IdToken = AuthenticationService.getUserInfo().ToString();
-            //IdToken =AuthenticationService.checkLogin().ToString();
+            
+            if (SessionManager.IsAuthenticated())
+            {
+                var accessToken = SessionManager.GetCurrentAccessToken();
+                IdToken = SessionManager.GetCurrentAccessToken();
+                // do something with the access token and user
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

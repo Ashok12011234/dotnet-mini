@@ -15,6 +15,7 @@ namespace EcommerceMAUI.Model.SDK
         private const string clientSecret = "ClientSecret";
         private const string authorizationEndpoint = "AuthorizationEndpoint";
         private const string tokenEndpoint = "TokenEndpoint";
+        private const string introspectionEndpoint = "IntrospectionEndpoint";
         private const string userInfoEndpoint = "UserInfoEndpoint";
         private const string logoutEndpoint = "LogoutEndpoint";
         private const string redirectURI = "RedirectURI";
@@ -38,6 +39,7 @@ namespace EcommerceMAUI.Model.SDK
         public static string ClientSecret => clientSecret;
         public static string AuthorizationEndpoint => authorizationEndpoint;
         public static string TokenEndpoint => tokenEndpoint;
+        public static string IntrospectionEndpoint => introspectionEndpoint;
         public static string UserInfoEndpoint => userInfoEndpoint;
         public static string LogoutEndpoint => logoutEndpoint;
         public static string RedirectURI => redirectURI;

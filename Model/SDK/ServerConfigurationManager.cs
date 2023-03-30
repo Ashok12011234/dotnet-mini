@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using log4net;
 using System.Configuration;
 using System.Net;
@@ -25,7 +26,7 @@ namespace EcommerceMAUI.Model.SDK
             ServerConfiguration config = new ServerConfiguration();
             if (config.ClientId == "" || config.ClientSecret == "" || config.AuthorizationEndpoint == "" ||
                 config.TokenEndpoint == "" || config.UserInfoEndpoint == "" || config.LogoutEndpoint == "" ||
-                config.RedirectUri == "" || config.PostLogoutRedirectUri == "")
+                config.RedirectUri == "" || config.PostLogoutRedirectUri == "" || config.IntrospectionEndpoint == "")
             {
                 return true;
             }
