@@ -43,19 +43,17 @@ public partial class AuthenticationService
         return subject;
     }
 
-    public static string getUserInfo()
+    public static JwtSecurityToken getUserInfo()
     {
         var accessToken = _currentAccessToken;
         dynamic accessJson = JsonConvert.DeserializeObject(accessToken);
-        var userInfo = authenticationHelper.UserInfo;
-        dynamic userJson = JsonConvert.DeserializeObject(userInfo);
         var idToken = accessJson.id_token;
 
         string stream = idToken;
         var handler = new JwtSecurityTokenHandler();
         var jsonToken = handler.ReadJwtToken(stream);
 
-        return jsonToken.ToString();
+        return jsonToken;
     }
 
     public static async Task<bool> isTokenValidAsync()
@@ -64,5 +62,16 @@ public partial class AuthenticationService
         return await authenticationHelper.IsTokenValid(accessToken);
     }
 
+    public static bool checkLogin()
+    {
+        var accessToken = _currentAccessToken;
+        if (_currentAccessToken == null) 
+        {
+            return false;
+        } else
+        {
+            return true;
+        }
+    }
 
 }

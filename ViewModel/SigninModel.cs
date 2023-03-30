@@ -40,7 +40,7 @@ namespace EcommerceMAUI.ViewModel
         {
 
             await AuthenticationService.login();
-
+            
             if (SessionManager.IsAuthenticated())
             {
                 var accessToken = SessionManager.GetCurrentAccessToken();
