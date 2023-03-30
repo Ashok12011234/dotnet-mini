@@ -19,7 +19,7 @@ namespace EcommerceMAUI.ViewModel
         {
            
             //await AuthenticationService.logout();
-            await Application.Current.MainPage.Navigation.PushModalAsync(new Signin());
+            //await Application.Current.MainPage.Navigation.PushModalAsync(new Signin());
 
         }
     }

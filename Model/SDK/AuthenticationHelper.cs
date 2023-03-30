@@ -8,6 +8,8 @@ using System.IO;
 using System.Security.Cryptography;
 using log4net;
 using System.Diagnostics;
+using Newtonsoft.Json.Linq;
+using System.Web;
 
 namespace EcommerceMAUI.Model.SDK
 {
@@ -124,7 +126,6 @@ namespace EcommerceMAUI.Model.SDK
                 Log.Info(String.Format("Received request with invalid state ({0})", incomingState));
                 return;
             }
-            Log.Info("Authorization code: " + code);
 
             // Starts the code exchange at the Token Endpoint.
             await PerformCodeExchange(code, codeVerifier, redirectUri);
@@ -147,6 +148,8 @@ namespace EcommerceMAUI.Model.SDK
                 codeVerifier,
                 config.ClientSecret
                 );
+
+            Log.Info("Token request Body" + tokenRequestBody);
 
             // Enable ssl veification to establish trust relationship for the SSL/TLS secure channel.           
             configurationManager.EnableSSLverification();
@@ -221,6 +224,72 @@ namespace EcommerceMAUI.Model.SDK
             }
         }
 
+        public async Task UserGetSession(string accessToken)
+        {
+            // Sends request.
+            HttpWebRequest userinfoRequest = (HttpWebRequest)WebRequest.Create(config.UserInfoEndpoint);
+            userinfoRequest.Method = Constants.MethodGet;
+            userinfoRequest.Headers.Add(string.Format("Authorization: Bearer {0}", accessToken));
+            userinfoRequest.ContentType = Constants.ContentType;
+            //userinfoRequest.Accept = Constants.Accept;
+
+            // Gets response.
+            WebResponse userinfoResponse = await userinfoRequest.GetResponseAsync();
+            using (StreamReader userinfoResponseReader = new StreamReader(userinfoResponse.GetResponseStream()))
+            {
+                // Reads response body.
+                string userinfoResponseText = await userinfoResponseReader.ReadToEndAsync();
+                this.UserInfo = userinfoResponseText;
+            }
+        }
+        public async Task<bool> IsTokenValid(string accessToken)
+        {
+            // Creates HttpListener to listen for requests on above redirect URI.
+            var http = new HttpListener();
+
+            // We need to have a trailing slash at the end of the URL. 
+            var redirectUri = config.RedirectUri;
+            if (!redirectUri.EndsWith("/"))
+            {
+                redirectUri += "/";
+            }
+
+            http.Prefixes.Add(redirectUri);
+
+            // Open the web browser.
+            http.Start();
+
+            // Creates the introspection request.
+            HttpWebRequest introspectionRequest = (HttpWebRequest)WebRequest.Create(config.IntrospectionEndpoint);
+            introspectionRequest.Method = Constants.MethodPost;
+            introspectionRequest.ContentType = "application/x-www-form-urlencoded";
+
+            // Adds the client credentials to the request.
+            string clientCredentials = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:{1}", config.ClientId, config.ClientSecret)));
+            introspectionRequest.Headers.Add("Authorization", "Basic " + clientCredentials);
+
+            // Adds the access token to the request.
+            string postData = string.Format("token={0}", HttpUtility.UrlEncode(accessToken));
+            byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+            introspectionRequest.ContentLength = byteArray.Length;
+
+            using (Stream requestStream = introspectionRequest.GetRequestStream())
+            {
+                requestStream.Write(byteArray, 0, byteArray.Length);
+            }
+
+            Log.Info("REEEEEE" +introspectionRequest.Headers);
+
+            WebResponse introspectionResponse = await introspectionRequest.GetResponseAsync();
+            using (StreamReader introspectionResponseReader = new StreamReader(introspectionResponse.GetResponseStream()))
+            {
+                // Reads response body.
+                string introspectionResponseText = await introspectionResponseReader.ReadToEndAsync();
+                return introspectionResponseText.Contains("\"active\":true");
+            }
+        }
+
+
         /// <summary>
         /// Method for Logout.
         /// </summary>
@@ -246,7 +315,20 @@ namespace EcommerceMAUI.Model.SDK
                 config.PostLogoutRedirectUri);
 
             // Opens request in the browser.    
-            System.Diagnostics.Process.Start(postRedirectURI);
+            //System.Diagnostics.Process.Start(postRedirectURI);
+            Process myProcess = new Process();
+
+            try
+            {
+                // true is the default, but it is important not to set it to false
+                myProcess.StartInfo.UseShellExecute = true;
+                myProcess.StartInfo.FileName = postRedirectURI;
+                myProcess.Start();
+            }
+            catch (Exception e)
+            {
+                Log.Debug(e);
+            }
 
             // Waits for the OAuth authorization response.
             var context = await http.GetContextAsync();

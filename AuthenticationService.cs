@@ -21,21 +21,18 @@ public partial class AuthenticationService
         authenticationHelper = new AuthenticationHelper();
         await authenticationHelper.Login();
         _currentAccessToken = authenticationHelper.AccessToken;
+        var currentUser = getUserInfo();
+        SessionManager.SetSession(_currentAccessToken, currentUser);
 
     }
 
     public static async Task logout()
     {
-        await authenticationHelper.Logout(_currentAccessToken);
-        //var request = authenticationHelper.Request;
-    }
-
-    public static string getAccessToken()
-
-    {
-       // _currentAccessToken = authenticationHelper.AccessToken;
-        return _currentAccessToken;
-
+        if (SessionManager.IsAuthenticated())
+        {
+            await authenticationHelper.Logout(_currentAccessToken);
+            SessionManager.ClearSession();
+        }
     }
 
     public static string getUser()
@@ -59,6 +56,12 @@ public partial class AuthenticationService
         var jsonToken = handler.ReadJwtToken(stream);
 
         return jsonToken.ToString();
+    }
+
+    public static async Task<bool> isTokenValidAsync()
+    {
+        var accessToken = _currentAccessToken;
+        return await authenticationHelper.IsTokenValid(accessToken);
     }
 
 
